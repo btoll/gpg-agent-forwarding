@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -eux
+set -euxo pipefail
 
 # This will target the signing subkey.
 KEYGRIP=$(gpg --list-secret-keys --with-keygrip \
