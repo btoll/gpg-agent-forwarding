@@ -126,5 +126,19 @@ If you're having trouble with the `gpg-agent` forwarding, here are some tips:
 1. ~~`rm ~/.ssh/known_hosts` on the local host.~~ (`-o "UserKnownHostsFile=/dev/null"` fixes this)
 1. Note that specifying a remote `bind_address` will only succeed if the server's `GatewayPorts` option is enabled (see `sshd_config(5)`).
 
+```bash
+$ sudo docker build -t signing .
+```
+
+```bash
+$ sudo docker run \
+    --rm \
+    --env PACKAGE_NAME=asbits \
+    --env PACKAGE_VERSION=1.0.0 \
+    --volume ./build:/home/noroot/build \
+    --volume /run/user/1000/gnupg/S.gpg-agent:/home/noroot/.gnupg/S.gpg-agent \
+    -it signing
+```
+
 [`gpg-preset-passphrase`]: https://www.gnupg.org/documentation/manuals/gnupg/Invoking-gpg_002dpreset_002dpassphrase.html
 
