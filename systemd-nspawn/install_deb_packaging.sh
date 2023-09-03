@@ -15,7 +15,7 @@ apt-get install -y \
 echo "StreamLocalBindUnlink yes" >> /etc/ssh/sshd_config
 /etc/init.d/ssh start
 
-curl -LO https://github.com/btoll/gpg-agent-forwarding/raw/master/public.key
+curl -LO /path/to/public.key
 gpg --import public.key
 
 KEYID=$(gpg \
